@@ -1112,7 +1112,7 @@ void ComputeGradientMapByMyCompass4Dirs(unsigned char *smoothCh1Img, unsigned ch
   double scale = max/255.0;
   for (int i=0; i<width*height; i++) gradImg[i] = (short)(tmpGradImg[i]/scale);
 
-  delete tmpGradImg;
+  delete[] tmpGradImg;
 } // end-ComputeGradientMapByMyCompass4Dirs
 
 ///-----------------------------------------------------------------------------------------------------------------------------------

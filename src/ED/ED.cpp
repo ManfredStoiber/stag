@@ -59,9 +59,9 @@ EdgeMap *DetectEdgesByED(unsigned char *srcImg, int width, int height, GradientO
   EdgeMap *map = DoDetectEdgesByED(gradImg, dirImg, width, height, GRADIENT_THRESH, ANCHOR_THRESH);
 
   // Clean up
-  delete gradImg;
-  delete dirImg;
-  delete smoothImg;
+  delete[] gradImg;
+  delete[] dirImg;
+  delete[] smoothImg;
 
   return map;
 } //DetectEdgesByED
@@ -110,9 +110,9 @@ EdgeMap *DetectEdgesByEDV(unsigned char *srcImg, int width, int height, Gradient
 #endif
 
   // Clean up
-  delete gradImg;
-  delete dirImg;
-  delete smoothImg;
+  delete[] gradImg;
+  delete[] dirImg;
+  delete[] smoothImg;
 
   return map;
 } //DetectEdgesByEDV
@@ -284,7 +284,7 @@ EdgeMap *DetectEdgesByCannySR2(unsigned char *srcImg, int width, int height, int
   cvReleaseImage(&iplImg);
   cvReleaseImage(&edgeImg);
 
-  delete gradImg;
+  delete[] gradImg;
 
   return map;
 } //end-DetectEdgesByCannySR2
@@ -302,7 +302,7 @@ EdgeMap *DetectEdgesByCannySRPF(unsigned char *srcImg, int width, int height, in
   ValidateEdgeSegments(map, smoothImg, 2.25);  // With Prewitt
 //  ValidateEdgeSegments2(map, smoothImg, 2);  // With LSD
 
-  delete smoothImg;
+  delete[] smoothImg;
 
   return map;
 } //end-DetectEdgesByCannySRPF
@@ -374,11 +374,11 @@ EdgeMap *DetectEdgesByED(unsigned char *ch1Img, unsigned char *ch2Img, unsigned 
 //  EdgeMap *map = DoDetectEdgesByED(gradImg, width, height, GRADIENT_THRESH);   // Fails especially around the corners, where the gradient operator does not give good response.
 
   // Clean up
-  delete gradImg;
-  delete dirImg;
-  delete smoothCh3Img;
-  delete smoothCh2Img;
-  delete smoothCh1Img;
+  delete[] gradImg;
+  delete[] dirImg;
+  delete[] smoothCh3Img;
+  delete[] smoothCh2Img;
+  delete[] smoothCh1Img;
 
   return map;
 } //end-DetectEdgesByED
@@ -452,11 +452,11 @@ EdgeMap *DetectEdgesByEDPF(unsigned char *ch1Img, unsigned char *ch2Img, unsigne
 #endif
 
   // Clean up
-  delete gradImg;
-  delete dirImg;
-  delete smoothCh3Img;
-  delete smoothCh2Img;
-  delete smoothCh1Img;
+  delete[] gradImg;
+  delete[] dirImg;
+  delete[] smoothCh3Img;
+  delete[] smoothCh2Img;
+  delete[] smoothCh1Img;
 
   return map;
 } //end-DetectEdgesByEDPF
@@ -490,7 +490,7 @@ EdgeMap *DetectContourEdgeMapByED1(unsigned char *srcImg, unsigned char *contour
     } //end-for
   } //end-for
 
-  delete smoothContourImg;
+  delete[] smoothContourImg;
 
 #if 0
   memset(smoothImg, 0, width*height);
@@ -502,9 +502,9 @@ EdgeMap *DetectContourEdgeMapByED1(unsigned char *srcImg, unsigned char *contour
   EdgeMap *map = DoDetectEdgesByED(gradImg, dirImg, width, height, GRADIENT_THRESH, ANCHOR_THRESH);
 
   // Clean up
-  delete gradImg;
-  delete dirImg;
-  delete smoothImg;
+  delete[] gradImg;
+  delete[] dirImg;
+  delete[] smoothImg;
 
   return map;
 } //end-DetectContourEdgeMapByED1
@@ -550,17 +550,17 @@ EdgeMap *DetectContourEdgeMapByED1(unsigned char *ch1Img, unsigned char *ch2Img,
     } //end-for
   } //end-for
 
-  delete smoothContourImg;
+  delete[] smoothContourImg;
 
   // Now, detect the edges by ED
   EdgeMap *map = DoDetectEdgesByED(gradImg, dirImg, width, height, GRADIENT_THRESH, ANCHOR_THRESH);
 
   // Clean up
-  delete gradImg;
-  delete dirImg;
-  delete smoothCh3Img;
-  delete smoothCh2Img;
-  delete smoothCh1Img;
+  delete[] gradImg;
+  delete[] dirImg;
+  delete[] smoothCh3Img;
+  delete[] smoothCh2Img;
+  delete[] smoothCh1Img;
 
   return map;
 } //end-DetectContourEdgeMapByED1
@@ -585,7 +585,7 @@ EdgeMap *DetectContourEdgeMapByED2(unsigned char *contourImg, int width, int hei
     } //end-for
   } //end-for
 
-  delete smoothImg;
+  delete[] smoothImg;
 
 #if 0
   DumpGradImage("OutputImages/gradImg.pgm", gradImg, width, height);
@@ -595,7 +595,7 @@ EdgeMap *DetectContourEdgeMapByED2(unsigned char *contourImg, int width, int hei
   EdgeMap *map = DoDetectEdgesByED(gradImg, width, height, 4);
 
   // Clean up
-  delete gradImg;
+  delete[] gradImg;
 
   return map;
 } //end-DetectContourEdgeMapByED2
@@ -813,13 +813,13 @@ EdgeMap *DetectContourEdgeMapByED3(unsigned char *ch1Img, unsigned char *ch2Img,
 
 
   // Clean up
-  delete gradImg;
-  delete gxImg;
-  delete gyImg;
-  delete dirImg;
-  delete smoothCh1Img;
-  delete smoothCh2Img;
-  delete smoothCh3Img;
+  delete[] gradImg;
+  delete[] gxImg;
+  delete[] gyImg;
+  delete[] dirImg;
+  delete[] smoothCh1Img;
+  delete[] smoothCh2Img;
+  delete[] smoothCh3Img;
 
   return map;
 } //end-DetectContourEdgeMapByED3
@@ -865,9 +865,9 @@ EdgeMap *DetectEdgesByED10(unsigned char *srcImg, int width, int height, int GRA
 #endif
 
   // Clean up
-  delete gradImg;
-  delete dirImg;
-  delete smoothImg;
+  delete[] gradImg;
+  delete[] dirImg;
+  delete[] smoothImg;
 
   return map;
 } //DetectEdgesByED10
@@ -937,11 +937,11 @@ EdgeMap *DetectEdgesByED10(unsigned char *ch1Img, unsigned char *ch2Img, unsigne
 
 
   // Clean up
-  delete gradImg;
-  delete dirImg;
-  delete smoothCh3Img;
-  delete smoothCh2Img;
-  delete smoothCh1Img;
+  delete[] gradImg;
+  delete[] dirImg;
+  delete[] smoothCh3Img;
+  delete[] smoothCh2Img;
+  delete[] smoothCh1Img;
 
   return map;
 } //end-DetectEdgesByED10
@@ -1031,11 +1031,11 @@ EdgeMap *DetectEdgesByED10V(unsigned char *ch1Img, unsigned char *ch2Img, unsign
 #endif
 
   // Clean up
-  delete gradImg;
-  delete dirImg;
-  delete smoothCh3Img;
-  delete smoothCh2Img;
-  delete smoothCh1Img;
+  delete[] gradImg;
+  delete[] dirImg;
+  delete[] smoothCh3Img;
+  delete[] smoothCh2Img;
+  delete[] smoothCh1Img;
 
   return map;
 } //end-DetectEdgesByED10V

@@ -39,8 +39,8 @@ struct StackNode {
 struct Chain {
   short dir;                   // Direction of the chain
   unsigned short len;          // # of pixels in the chain
-  short parent;                // Parent of this node (-1 if no parent)
-  short children[2];           // Children of this node (-1 if no children)
+  int parent;                // Parent of this node (-1 if no parent)
+  int children[2];           // Children of this node (-1 if no children)
   Pixel *pixels;               // Pointer to the beginning of the pixels array
 };
 
@@ -739,10 +739,10 @@ StartOfWhile:
 
   map->noSegments = noSegments;
 
-  delete chains;
-  delete stack;
-  delete pixels;
-  delete chainNos;
+  delete[] chains;
+  delete[] stack;
+  delete[] pixels;
+  delete[] chainNos;
 } //end-JoinAnchorPoints
 
 ///-----------------------------------------------------------------------------------
@@ -2298,11 +2298,11 @@ StartOfWhile:
 
   map->noSegments = noSegments;
 
-  delete A;
-  delete chains;
-  delete stack;
-  delete pixels;
-  delete chainNos;
+  delete[] A;
+  delete[] chains;
+  delete[] stack;
+  delete[] pixels;
+  delete[] chainNos;
 } //end-JoinAnchorPointsUsingSortedAnchors4Dirs
 
 ///----------------------------------------------------------------------------------------------
@@ -2837,8 +2837,8 @@ void JoinAnchorPointsUsingSortedAnchors(short *gradImg, EdgeMap *map, int GRADIE
 
   map->noSegments = noSegments;
 
-  delete tmpPixels;
-  delete A;
+  delete[] tmpPixels;
+  delete[] A;
 } // end-JoinAnchorPointsUsingSortedAnchors
 
 ///----------------------------------------------------------------------------------------------

@@ -33,7 +33,7 @@ public:
 public:
   /// Constructor: 
   EDLines(int width, int height){
-    int imageSize = width+height;
+    int imageSize = width*height;
     capacity = imageSize*8;
     lines = new LineSegment[capacity];
     noLines = 0;
